@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/layoutOrders1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvOrderId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_order"
+            android:drawablePadding="10dp"
+            android:padding="5dp"
+            android:text="Order ID: 1234"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvStoreName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:drawableLeft="@drawable/ic_food"
+            android:drawablePadding="10dp"
+            android:padding="5dp"
+            android:text="7-Elevent Nguyen Thi Minh Khai"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/tvStoreAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:drawableLeft="@drawable/ic_map"
+            android:drawablePadding="10dp"
+            android:padding="5dp"
+            android:text="7-Elevent Nguyen Thi Minh Khai"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/tvCusName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:drawableLeft="@drawable/ic_user"
+            android:drawablePadding="10dp"
+            android:padding="5dp"
+            android:text="Test"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/tvCusAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:drawableLeft="@drawable/ic_user_location"
+            android:drawablePadding="10dp"
+            android:padding="5dp"
+            android:text="Test"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="2"
+                android:drawableLeft="@drawable/ic_cash"
+                android:drawablePadding="10dp"
+                android:padding="5dp"
+                android:text="Cash"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvTotalPrices"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="99000 VND"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnAccept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/colorPrimary"
+            android:text="Nhận đơn"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_margin="10dp"
+            android:background="@color/colorPrimary" />
+    </LinearLayout>
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/layoutOrders2"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="center"-->
+    <!--        android:gravity="center"-->
+    <!--        android:text="@string/text_no_order"-->
+    <!--        android:textColor="@color/colorBlack"-->
+    <!--        android:textSize="@dimen/largeFontSize"-->
+    <!--        android:visibility="gone" />-->
+
+
+</LinearLayout>

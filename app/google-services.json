@@ -1,0 +1,115 @@
+{
+  "project_info": {
+    "project_number": "467224638863",
+    "firebase_url": "https://uitnow-8e7f3.firebaseio.com",
+    "project_id": "uitnow-8e7f3",
+    "storage_bucket": "uitnow-8e7f3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467224638863:android:5dbba71a8020577af347fa",
+        "android_client_info": {
+          "package_name": "com.uit.demofirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "467224638863-kbf58bna7q1fv5bfde8i0vgmrrcl8f8m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.uit.demofirebase",
+            "certificate_hash": "36984c823cf5e394a59f17db807a448823ad5b89"
+          }
+        },
+        {
+          "client_id": "467224638863-b0olv62vbqqod8jirf27dkfnmob4ctsp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDInQ4lxyYLi3WG9-HLZTO0SvGLajI0u2c"
+        },
+        {
+          "current_key": "AIzaSyA0JWfkC28I3KpTzcVwYuLjVlMn3fsIuns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "467224638863-b0olv62vbqqod8jirf27dkfnmob4ctsp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467224638863:android:ca37145087f50c85f347fa",
+        "android_client_info": {
+          "package_name": "com.uit.uitnow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "467224638863-b0olv62vbqqod8jirf27dkfnmob4ctsp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDInQ4lxyYLi3WG9-HLZTO0SvGLajI0u2c"
+        },
+        {
+          "current_key": "AIzaSyA0JWfkC28I3KpTzcVwYuLjVlMn3fsIuns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "467224638863-b0olv62vbqqod8jirf27dkfnmob4ctsp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467224638863:android:4c48545e4febf204f347fa",
+        "android_client_info": {
+          "package_name": "com.uit.uitnowfordrivers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "467224638863-b0olv62vbqqod8jirf27dkfnmob4ctsp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDInQ4lxyYLi3WG9-HLZTO0SvGLajI0u2c"
+        },
+        {
+          "current_key": "AIzaSyA0JWfkC28I3KpTzcVwYuLjVlMn3fsIuns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "467224638863-b0olv62vbqqod8jirf27dkfnmob4ctsp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
