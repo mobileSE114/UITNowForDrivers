@@ -6,11 +6,10 @@
 
     <ImageView
         android:id="@+id/ivLogo"
-        android:layout_width="172dp"
-        android:layout_height="130dp"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginRight="0dp"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@drawable/icon_logo" />
 
     <TextView
         android:textStyle="bold"
