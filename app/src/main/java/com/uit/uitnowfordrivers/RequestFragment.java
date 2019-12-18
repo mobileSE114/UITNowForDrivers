@@ -100,11 +100,13 @@ public class RequestFragment extends Fragment implements RequestAdapter.RequestL
             app.currentRequest.setDriverLocation(app.location);
             app.currentRequest.setDriverName(app.driver.getName());
             app.currentRequest.setDriverId(app.driver.getId());
+            app.currentRequest.setDriverPhone(app.driver.getPhone());
             Map<String, Object> data = new HashMap<>();
             data.put("driverId", app.driver.getId());
             data.put("driverName", app.driver.getName());
             data.put("driverLocation", app.location);
             data.put("status",OrderRequestStatus.ACCEPTED);
+            data.put("driverPhone",app.driver.getPhone());
             db.collection("Requests").document(request.getId()).set(data, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
