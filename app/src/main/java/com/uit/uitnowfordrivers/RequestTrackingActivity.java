@@ -37,6 +37,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.SetOptions;
+import com.google.firestore.v1.StructuredQuery;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -252,15 +253,11 @@ public class RequestTrackingActivity extends AppCompatActivity implements OnMapR
         {
             if(id==R.id.btnFinish)
             {
-                db.collection("Requests").document(request.getId()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                db.collection("Requests").document(request.getId()).update("status", OrderRequestStatus.FINISHED).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        db.collection("Orders").document(request.getIdOrder()).update("trangThai","Finished").addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
                                 finish();
-                            }
-                        });
+
                     }
                 });
             }
