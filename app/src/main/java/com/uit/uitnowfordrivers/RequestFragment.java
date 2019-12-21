@@ -132,6 +132,7 @@ public class RequestFragment extends Fragment implements RequestAdapter.RequestL
         } else {
             LocationServiceTask.displayEnableLocationServiceDialog(getActivity()); // 5
         }
+        getRequests();
     }
 
     private void getLastLocation(Context context) {

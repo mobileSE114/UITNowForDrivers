@@ -1,20 +1,26 @@
 package com.uit.uitnowfordrivers;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.location.Location;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -34,7 +40,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firestore.v1.StructuredQuery;
@@ -48,13 +58,15 @@ public class RequestTrackingActivity extends AppCompatActivity implements OnMapR
     RelativeLayout layoutRequesting, layoutInfor;
     App app;
     GoogleMap map;
-    TextView tvDelivery, tvStore, tvTotal;
+    TextView tvDelivery, tvStore, tvTotal,txtCusName;
     Button btnCancelRequest,btnFinish;
+    ImageButton btnChat,btnCall;
     FirebaseFirestore db;
     Request request;
     FusedLocationProviderClient locationClient;
     LocationCallback locationCallback;
     static int REQUEST_LOCATION = 101;
+    static final int CALL_REQUEST=102;
     long UPDATE_INTERVAL = 10 * 1000;  /* 10 secs */
     long FASTEST_INTERVAL = 5 * 1000; /* 2 sec */
     @Override
@@ -108,7 +120,6 @@ public class RequestTrackingActivity extends AppCompatActivity implements OnMapR
         tvStore = findViewById(R.id.tvStore);
         tvTotal = findViewById(R.id.tvTotal);
         layoutRequesting = findViewById(R.id.layoutRequesting);
-        layoutInfor = findViewById(R.id.layoutInfo);
         btnCancelRequest=findViewById(R.id.btnCancel);
         btnCancelRequest.setOnClickListener(this);
         tvDelivery.setText(request.getUserAddress());
@@ -118,6 +129,12 @@ public class RequestTrackingActivity extends AppCompatActivity implements OnMapR
         tvDelivery.setOnClickListener(this);
         btnFinish=findViewById(R.id.btnFinish);
         btnFinish.setOnClickListener(this);
+        txtCusName=findViewById(R.id.txtCusName);
+        txtCusName.setText(request.getUserName());
+        btnChat=findViewById(R.id.btnChat);
+        btnChat.setOnClickListener(this);
+        btnCall=findViewById(R.id.btnCall);
+        btnCall.setOnClickListener(this);
     }
 
     private void cancelRequest()
@@ -257,7 +274,6 @@ public class RequestTrackingActivity extends AppCompatActivity implements OnMapR
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                                 finish();
-
                     }
                 });
             }
@@ -273,9 +289,63 @@ public class RequestTrackingActivity extends AppCompatActivity implements OnMapR
                     {
                         map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(request.userLocation.getLatitude(),request.userLocation.getLongitude()),14));
                     }
+                    else
+                    {
+                        if(id==R.id.btnChat)
+                        {
+                            openChat();
+                        }
+                        else
+                        {
+                            if(id==R.id.btnCall)
+                            {
+                                if(ContextCompat.checkSelfPermission(RequestTrackingActivity.this, Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED)
+                                {
+                                    if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M)
+                                    {
+                                        requestPermissions(new String[]{Manifest.permission.CALL_PHONE},CALL_REQUEST);
+                                    }
+                                    return;
+                                }
+                                String txtcall="tel:"+app.currentRequest.getUserPhone();
+                                Intent callIntent=new Intent(Intent.ACTION_CALL);
+                                callIntent.setData(Uri.parse(txtcall));
+                                if(callIntent.resolveActivity(getPackageManager())!=null)
+                                {
+                                    startActivity(callIntent);
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
+    }
+
+    private void openChat() {
+        Intent intent = new Intent(this, ChatActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        final DocumentReference docRef = db.collection("Orders").document(app.currentRequest.getIdOrder());
+        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                if (e != null) {
+                    Log.e("Test", "Listen failed.", e);
+                    return;
+                }
+                if (documentSnapshot != null && documentSnapshot.exists()) {
+                    if(documentSnapshot.toObject(Order.class).trangThai.equals("Cancelled"))
+                    {
+                        finish();
+                    }
+                }
+            }
+        });
     }
 }
 

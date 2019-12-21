@@ -13,6 +13,8 @@ public class Request {
     String userAddress;
     GeoPoint userLocation;
     String userName;
+    String userPhone;
+    String userId;
     GeoPoint driverLocation;
     String driverName;
     String driverId;
@@ -147,5 +149,21 @@ public class Request {
 
     public void setDriverPhone(String driverPhone) {
         this.driverPhone = driverPhone;
+    }
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }
