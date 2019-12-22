@@ -68,11 +68,11 @@ public class RequestFragment extends Fragment implements RequestAdapter.RequestL
     }
 
     private void getRequests() {
-        requests.clear();
         db.collection("Requests").whereEqualTo("status", OrderRequestStatus.REQUESTING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
+	            requests.clear();		
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         Request r = document.toObject(Request.class);
                         Log.e("Test", "Order " + r.getId());
